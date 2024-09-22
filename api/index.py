@@ -24,10 +24,10 @@ def about():
 
 @app.get("/manifest.json/")
 def manifest():
-    return send_file("./manifest.json")
+    return send_file("manifest.json")
 
 @app.get("/icons/<icon>/")
 def get_icon(icon):
-    if (path := (Path("./icons/") / icon).resolve()).parent != Path("./icons/"):
+    if (path := (Path("icons") / icon).resolve()).parent != Path("icons"):
         return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-    return send_file(f"./icons/{path}")
+    return send_file(path)
