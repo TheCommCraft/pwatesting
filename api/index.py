@@ -28,6 +28,6 @@ def manifest():
 
 @app.get("/icons/<icon>/")
 def get_icon(icon):
-    if (path := (Path("./icons") / icon).resolve()).parent != Path("./icons").resolve():
+    if (path := Path("./icons") / icon).resolve().parent != Path("./icons").resolve():
         return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
     return send_file(path)
